@@ -20,8 +20,9 @@ export class MovieListComponent implements OnInit {
   }
 
   fetchMovies(): void {
-    this.movieService.getMovies().subscribe((data) => {
-      this.movies = data;
+    this.movieService.getMovies().subscribe({
+      next: (data) => (this.movies = data),
+      error: (err) => console.error('Error: ', err)
     });
   }
 

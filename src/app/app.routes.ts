@@ -4,7 +4,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieFormComponent } from './components/movie-form/movie-form.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent }, // Home route
+  { path: '', redirectTo: '/movies', pathMatch: 'full' }, // Home route
   { path: 'movies', component: MovieListComponent }, // Movie List route
   { path: 'movies/add', component: MovieFormComponent }, // Add Movie route
   { path: 'movies/edit/:id', component: MovieFormComponent }, // Edit Movie route

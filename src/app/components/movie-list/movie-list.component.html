@@ -1,16 +1,48 @@
 <h2>Movie List</h2>
+
+<!-- Add New Movie Button -->
+<div class="add-button-container">
+  <button
+    routerLink="/movies/add"
+    class="add-button"
+  >
+    Add New Movie
+  </button>
+</div>
+
+<!-- Movie List Table -->
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Director</th>
-    <th>Actions</th>
-  </tr>
-  <tr *ngFor="let movie of movies">
-    <td>{{ movie.title }}</td>
-    <td>{{ movie.director }}</td>
-    <td>
-      <a [routerLink]="['/movies/edit', movie._id]">Edit</a>
-      <button (click)="deleteMovie(movie._id)">Delete</button>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>
+        <a (click)="showMovieDetails(movie)" class="movie-title-link">
+          {{ movie.title }}
+        </a>
+      </td>
+      <td>{{ movie.director }}</td>
+      <td>
+        <button (click)="editMovie(movie._id)" class="edit-button">Edit</button>
+        <button (click)="deleteMovie(movie._id)" class="delete-button">Delete</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<!-- Movie Details Section -->
+<div *ngIf="selectedMovie" class="movie-details">
+  <h3>Movie Details</h3>
+  <p><strong>Title:</strong> {{ selectedMovie.title }}</p>
+  <p><strong>Director:</strong> {{ selectedMovie.director }}</p>
+  <p><strong>Genre:</strong> {{ selectedMovie.genre }}</p>
+  <p><strong>Year:</strong> {{ selectedMovie.year }}</p>
+  <p><strong>Rental Price:</strong> ${{ selectedMovie.rentalPrice }}</p>
+  <p><strong>Available Copies:</strong> {{ selectedMovie.availableCopies }}</p>
+  <button (click)="hideMovieDetails()" class="close-button">Close</button>
+</div>

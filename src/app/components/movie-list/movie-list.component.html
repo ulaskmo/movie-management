@@ -1,5 +1,16 @@
 <h2>Movie List</h2>
 
+<!-- Search Section -->
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="searchMovies()"
+    placeholder="Search by Title or Director"
+    class="search-input"
+  />
+</div>
+
 <!-- Add New Movie Button -->
 <div class="add-button-container">
   <button
@@ -20,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let movie of movies">
+    <tr *ngFor="let movie of filteredMovies">
       <td>
         <a (click)="showMovieDetails(movie)" class="movie-title-link">
           {{ movie.title }}

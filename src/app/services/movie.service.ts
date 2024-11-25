@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MovieService {
-  private apiUrl = 'http://localhost:3000/api/movies'; // Your Express API URL
+  private apiUrl = 'http://localhost:3000/api/movies'; // My Express API URL
 
   constructor(private http: HttpClient) {}
 
